@@ -6,6 +6,6 @@ city in the USA, and we want to know where to start our search._
 This is the premise of the current assessment. We start the analysis in order to determine where this device could be.
 
 ### Directories
-⋅⋅* **src** > There is a main.py and functions files. When running the main.py in terminal, we locate this device for the given params.
-⋅⋅* **notebooks** > This folder contain a basic data exploration and the [dataset used.](https://www.kaggle.com/NUFORC/ufo-sightings)
-⋅⋅* **outputs** > This folder contain a html file where we can explore the location in a map.
+- **src** > There is a main.py and functions files. When running the main.py in terminal, we locate this device for the given params.
+- **notebooks** > This folder contain a basic data exploration and the [dataset used.](https://www.kaggle.com/NUFORC/ufo-sightings)
+- **outputs** > This folder contain a html file where we can explore the location in a map.
