@@ -1,25 +1,24 @@
 import pandas as pd
-import numpy as np
 import folium
+from functions import search_ufo_device
 
+# Question
+# Our data science team has predicted that the Earth is going to be invaded by an alien force in the
+# next years. Our only hope is to replicate a device that can block all alien technology in a radius of
+# ~300km. Sadly, the device was sold in 2004 to an anonymous buyer to protect her hometown and
+# we don't know how contact her again. We know that the device has been active since 2004 in one
+# city in the USA, and we want to know where to start our search.
+
+
+# First, we import dataset and parse time
 df = pd.read_csv("ufo.csv", parse_dates=['datetime'])
 
-def search_ufo_device(DataFrame, date, country, range):
-    """
-    With this function we filter dataframe for the values we are looking for
-    :param DataFrame: Given dataframe with all features
-    :param date: String format of datetime search starting point ("Year-month-day")
-    :param country: Country in which we are looking for.
-    :param range: Int radius of effectiveness (km)
-    :return: Location or list of locations
-    """
-    # First we select columns we want and set datetime as index
-    df = DataFrame[["datetime","city","country", "distance", "latitude", "longitude"]]
-    df["datetime"] = df['datetime'].str.replace('24:00', '0:00')
-    df["datetime"] = pd.to_datetime(df["datetime"], format = "%m/%d/%Y %H:%M")
-    df.set_index('datetime', inplace=True)
+# Let's remember the conditions:
+    # Must be from 2004 onwards
+    # Must be in the USA (Oh wait!)
+    # The application radious must be around 300 km effective
 
-    # Second, we apply filters by params inserted
-    ufo_dev = df.loc[date + " " + "00:00":]
-    ufo_dev = ufo_dev[ufo_dev['country'].str.contains("us")]
-    ufo_dev = ufo_dev[(ufo_dev['distance'] >= 300) & (ufo_dev['distance'] <= 400)]
+# We import the function we created ad hoc for this assessment
+
+search_ufo_device(DataFrame = df, date = "2004-01-01", country = "USA", min_range = 300)
+
